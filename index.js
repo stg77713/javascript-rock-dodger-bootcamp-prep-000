@@ -37,7 +37,7 @@ function checkCollision(rock) {
     const rockRightEdge = 0;
     document.addEventListener('keydown', 
     function(e) {
-      console.log(e.which === )
+      console.log(e.which === right.length - 1)
     })
 
     if (false /**
