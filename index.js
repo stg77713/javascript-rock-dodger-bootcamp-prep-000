@@ -35,7 +35,8 @@ function checkCollision(rock) {
 
     // FIXME: The rock is 20 pixel's wide -- how do we get the right edge?
     const rockRightEdge = 0;
-    document.addEventListener('keydown')
+    document.addEventListener('keydown', 
+    function(e) )
 
     if (false /**
                * Think about it -- what's happening here?
