@@ -170,7 +170,7 @@ function moveDodger(e) {
    }
 }
 
-function moveDodgerLeft(e) {
+function moveDodgerLeft() {
   // implement me!
   /**
    * This function should move DODGER to the left
@@ -191,6 +191,10 @@ function moveDodgerRight() {
    * This function should move DODGER to the right
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
+   /** a big issue with this problem is that we tend to use
+    * function step when we need to animate it 
+    */
+   
   var right = 0 
   function step() {
     e.style.right = `${right += 2}px`
