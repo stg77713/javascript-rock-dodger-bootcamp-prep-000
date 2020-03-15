@@ -127,14 +127,28 @@ function moveDodger(e) {
    * we've declared for you above.)
    * And be sure to use the functions declared below!
    */
+   if (e.which === 37 && moveDodgerRight) {
+     moveDodgerLeft();
+   }
+   
+   if (e.which === 39 && moveDodgerLeft) {
+     moveDodgerRight();
+   }
 }
 
-function moveDodgerLeft() {
+function moveDodgerLeft(e) {
   // implement me!
   /**
    * This function should move DODGER to the left
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
+   var left = 0
+   function step() {
+     e.style.left = `${left += 4}px`
+     
+     window.requestAnimationFrame(step)
+   }
+   window.requestAnimationFrame(step)
 }
 
 function moveDodgerRight() {
@@ -143,6 +157,13 @@ function moveDodgerRight() {
    * This function should move DODGER to the right
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
+  var right = 0 
+  function step() {
+    e.style.right = `${right += 2}px`
+   
+    window.requestAnimationFrame(step)
+  }
+  window.requestAnimationFrame(step)
 }
 
 /**
