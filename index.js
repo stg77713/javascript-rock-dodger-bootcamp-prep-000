@@ -148,6 +148,15 @@ function endGame() {
   return alert("YOU LOSE!")
 }
 
+/** with this problem we see two errors
+ * one that maximum call stack size exceeded 
+ * so that means we need to stopPropagation at a certain point 
+ * if not it will keep checking for collisions 
+ * a way to do this is making an if statement that checks the indexOf
+ * and once it is greater than -1 so 0 and above 
+ * will end propagation so it does not keep checking
+ */
+
 function moveDodger(e) {
   // implement me!
   /**
@@ -157,7 +166,10 @@ function moveDodger(e) {
    * we've declared for you above.)
    * And be sure to use the functions declared below!
    */
-   
+  if ([LEFT_ARROW, RIGHT_ARROW].indexOf > -1) {
+    e.stopPropagation();
+    e.preventDefault();
+  }
    // as we see moveDodgerRight is not a good addon as all we needed
    // rememeber to read accordingly 
    // Better to next time use the constant and we will check on test
