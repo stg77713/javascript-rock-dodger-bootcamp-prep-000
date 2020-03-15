@@ -166,7 +166,7 @@ function moveDodger(e) {
    * we've declared for you above.)
    * And be sure to use the functions declared below!
    */
-  if ([LEFT_ARROW, RIGHT_ARROW].indexOf > -1) {
+  if ([LEFT_ARROW, RIGHT_ARROW].(e.which) > -1) {
     e.stopPropagation();
     e.preventDefault();
   }
