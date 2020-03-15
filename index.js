@@ -68,7 +68,10 @@ function createRock(x) {
    * Now that we have a rock, we'll need to append
    * it to GAME and move it downwards.
    */
-
+  /**
+   * forgot to appendChild
+   */
+  GAME.appendChild(rock)
 
   /**
    * This function moves the rock. (2 pixels at a time
@@ -82,8 +85,9 @@ function createRock(x) {
      * we should call endGame().
      */
     if (checkCollision(rock) === true) {
-      endGame();
-    } else if {
+      return endGame();
+    }
+    if (top < GAME_HEIGHT){
       moveRock();
     } else {
       delete rock;
