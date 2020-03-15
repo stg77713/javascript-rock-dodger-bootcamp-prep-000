@@ -170,19 +170,34 @@ function moveDodger(e) {
    }
 }
 
+/** a big issue with this problem is that we tend to use
+    * function step when we need to animate it 
+    * Also we need to look at positionToInteger and see we
+    * have promoted left 
+    * therefore we should use const left to move the integer 
+    * the requestAnimationFrame we are looking for is a function
+    * since we dont have a function to move left 4 pixels we have
+    * to create one 
+    * to move to the left 4 we subtract 4 from left 
+    * to move right we would add 4 to left
+    * Now in moving to the right we have to see if left is 
+    * less than the GAME_HEIGHT which is 360px after you
+    * subtract the 20px from DODGER and rock 
+*/
+
 function moveDodgerLeft() {
   // implement me!
   /**
    * This function should move DODGER to the left
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
-   var left = 0
-   function step() {
-     e.style.left = `${left += 4}px`
+   window.requestAnimationFrame(function() {
+     const left = positionToInteger(DODGER.style.left)
      
-     window.requestAnimationFrame(step)
-   }
-   window.requestAnimationFrame(step)
+     if (left > 0) {
+       DODGER.style.left = `${left - 4}px`;
+     }
+   })
 }
 
 function moveDodgerRight() {
@@ -191,17 +206,13 @@ function moveDodgerRight() {
    * This function should move DODGER to the right
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
-   /** a big issue with this problem is that we tend to use
-    * function step when we need to animate it 
-    */
-   
-  var right = 0 
-  function step() {
-    e.style.right = `${right += 2}px`
-   
-    window.requestAnimationFrame(step)
-  }
-  window.requestAnimationFrame(step)
+  window.requestAnimationFrame(function() {
+    const left = positionToInteger(DODGER.style.left)
+  
+    if (left < 360) {
+      DODGER.style.left = `${left + 4}px`;
+    }
+  })
 }
 
 /**
