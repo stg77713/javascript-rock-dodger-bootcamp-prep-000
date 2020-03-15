@@ -87,10 +87,22 @@ function createRock(x) {
     if (checkCollision(rock) === true) {
       return endGame();
     }
+    /**
+     * as we see else if did not work out as we had to
+     * see if the top hit the bottom and the only way is 
+     * by finding out if it is less than GAME_HEIGHT
+     * because once it equals GAME_HEIGHT it is at the bottom 
+     * since the rock is moving downwards
+     */
+     
     if (top < GAME_HEIGHT){
       window.requestAnimationFrame(moveRock())
     } else {
-      delete rock;
+      /** As we see we dont use delete rock as 
+       * that is not a function
+       * we use the method .remove()
+       */
+      rock.remove()
     }
     /**
      * Otherwise, if the rock hasn't reached the bottom of
@@ -104,7 +116,7 @@ function createRock(x) {
   }
 
   // We should kick off the animation of the rock around here.
-  window.requestAnimationFrame(rock)
+  window.requestAnimationFrame(moveRock)
   // Add the rock to ROCKS so that we can remove all rocks
   // when there's a collision.
   ROCKS.push(rock)
@@ -120,6 +132,20 @@ function createRock(x) {
  * Finally, alert "YOU LOSE!" to the player.
  */
 function endGame() {
+  clearInterval(gameInterval)
+  
+  ROCKS.forEach(function(rock) { rock.remove() })
+  
+  document.removeEventListener('keydown', moveDodger)
+  
+  /** the comments forgot to add to change the innerHTML to 
+   * Play again once the game in over 
+   * also to change the display to inline
+   */
+  START.innerHTML = 'Play again?'
+  START.style.display = 'inline'
+  // return alert instead of window.alert
+  return alert("YOU LOSE!")
 }
 
 function moveDodger(e) {
@@ -131,12 +157,16 @@ function moveDodger(e) {
    * we've declared for you above.)
    * And be sure to use the functions declared below!
    */
-   if (e.which === 37 && moveDodgerRight) {
-     moveDodgerLeft();
+   
+   // as we see moveDodgerRight is not a good addon as all we needed
+   // rememeber to read accordingly 
+   // Better to next time use the constant and we will check on test
+   if (e.which === 37) {
+     moveDodgerLeft()
    }
    
-   if (e.which === 39 && moveDodgerLeft) {
-     moveDodgerRight();
+   if (e.which === 39) {
+     moveDodgerRight()
    }
 }
 
